@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/charmbracelet/lipgloss"
-	"github.com/charmbracelet/lipgloss/list"
-	"github.com/charmbracelet/lipgloss/table"
 	"github.com/lucasb-eyer/go-colorful"
+	"github.com/yokecd/lipgloss"
+	"github.com/yokecd/lipgloss/list"
+	"github.com/yokecd/lipgloss/table"
 )
 
 func main() {

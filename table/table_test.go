@@ -5,10 +5,10 @@ import (
 	"testing"
 	"unicode"
 
-	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/x/ansi"
 	"github.com/charmbracelet/x/exp/golden"
 	"github.com/muesli/termenv"
+	"github.com/yokecd/lipgloss"
 )
 
 var TableStyle = func(row, col int) lipgloss.Style {

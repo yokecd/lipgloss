@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/charmbracelet/lipgloss/list"
+	"github.com/yokecd/lipgloss/list"
 )
 
 func main() {

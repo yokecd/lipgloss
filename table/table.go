@@ -3,8 +3,8 @@ package table
 import (
 	"strings"
 
-	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/x/ansi"
+	"github.com/yokecd/lipgloss"
 )
 
 // HeaderRow denotes the header's row index used when rendering headers. Use

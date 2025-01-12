@@ -17,7 +17,7 @@ Users familiar with CSS will feel at home with Lip Gloss.
 
 ```go
 
-import "github.com/charmbracelet/lipgloss"
+import "github.com/yokecd/lipgloss"
 
 var style = lipgloss.NewStyle().
     Bold(true).
@@ -407,7 +407,7 @@ You can also style the whitespace. For details, see [the docs][docs].
 Lip Gloss ships with a table rendering sub-package.
 
 ```go
-import "github.com/charmbracelet/lipgloss/table"
+import "github.com/yokecd/lipgloss/table"
 ```
 
 Define some rows of data.
@@ -463,7 +463,7 @@ For more on tables see [the docs](https://pkg.go.dev/github.com/charmbracelet/li
 Lip Gloss ships with a list rendering sub-package.
 
 ```go
-import "github.com/charmbracelet/lipgloss/list"
+import "github.com/yokecd/lipgloss/list"
 ```
 
 Define a new list.
@@ -570,7 +570,7 @@ for i := 0; i < repeat; i++ {
 Lip Gloss ships with a tree rendering sub-package.
 
 ```go
-import "github.com/charmbracelet/lipgloss/tree"
+import "github.com/yokecd/lipgloss/tree"
 ```
 
 Define a new tree.
@@ -695,7 +695,7 @@ This is common when running tests, CI, or when piping output elsewhere.</p>
 
 ```go
 import (
-    "github.com/charmbracelet/lipgloss"
+    "github.com/yokecd/lipgloss"
     "github.com/muesli/termenv"
 )
 
