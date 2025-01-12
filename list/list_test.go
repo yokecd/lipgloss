@@ -6,9 +6,9 @@ import (
 	"unicode"
 
 	"github.com/aymanbagabas/go-udiff"
-	"github.com/charmbracelet/lipgloss"
-	"github.com/charmbracelet/lipgloss/list"
-	"github.com/charmbracelet/lipgloss/tree"
+	"github.com/yokecd/lipgloss"
+	"github.com/yokecd/lipgloss/list"
+	"github.com/yokecd/lipgloss/tree"
 )
 
 // XXX: can't write multi-line examples if the underlying string uses

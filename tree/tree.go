@@ -29,7 +29,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/charmbracelet/lipgloss"
+	"github.com/yokecd/lipgloss"
 )
 
 // Node defines a node in a tree.

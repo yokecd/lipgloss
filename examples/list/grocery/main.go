@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/charmbracelet/lipgloss"
-	"github.com/charmbracelet/lipgloss/list"
+	"github.com/yokecd/lipgloss"
+	"github.com/yokecd/lipgloss/list"
 )
 
 var purchased = []string{
