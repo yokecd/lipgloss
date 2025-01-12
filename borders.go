@@ -1,6 +1,7 @@
 package lipgloss
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/charmbracelet/x/ansi"
@@ -229,6 +230,7 @@ func HiddenBorder() Border {
 func (s Style) applyBorder(str string) string {
 	var (
 		border    = s.getBorderStyle()
+		title     = s.borderTitle
 		hasTop    = s.getAsBool(borderTopKey, false)
 		hasRight  = s.getAsBool(borderRightKey, false)
 		hasBottom = s.getAsBool(borderBottomKey, false)
@@ -322,7 +324,7 @@ func (s Style) applyBorder(str string) string {
 
 	// Render top
 	if hasTop {
-		top := renderHorizontalEdge(border.TopLeft, border.Top, border.TopRight, width)
+		top := renderHorizontalEdge(border.TopLeft, border.Top, border.TopRight, title, width)
 		top = s.styleBorder(top, topFG, topBG)
 		out.WriteString(top)
 		out.WriteRune('\n')
@@ -360,7 +362,7 @@ func (s Style) applyBorder(str string) string {
 
 	// Render bottom
 	if hasBottom {
-		bottom := renderHorizontalEdge(border.BottomLeft, border.Bottom, border.BottomRight, width)
+		bottom := renderHorizontalEdge(border.BottomLeft, border.Bottom, border.BottomRight, "", width)
 		bottom = s.styleBorder(bottom, bottomFG, bottomBG)
 		out.WriteRune('\n')
 		out.WriteString(bottom)
@@ -370,20 +372,31 @@ func (s Style) applyBorder(str string) string {
 }
 
 // Render the horizontal (top or bottom) portion of a border.
-func renderHorizontalEdge(left, middle, right string, width int) string {
+func renderHorizontalEdge(left, middle, right, title string, width int) string {
 	if middle == "" {
 		middle = " "
 	}
 
-	leftWidth := ansi.StringWidth(left)
-	rightWidth := ansi.StringWidth(right)
+	var (
+		leftWidth = ansi.StringWidth(left)
+		midWidth  = ansi.StringWidth(middle)
+		runes     = []rune(middle)
+		j         = 0
+	)
 
-	runes := []rune(middle)
-	j := 0
+	absWidth := width - leftWidth
 
 	out := strings.Builder{}
 	out.WriteString(left)
-	for i := leftWidth + rightWidth; i < width+rightWidth; {
+
+	// If there is enough space to print the middle segment a space, the title, a space and middle segment
+	// Print that and remove it from the absolute length of the border.
+	if titleLen := ansi.StringWidth(title) + 2 + 2*midWidth; title != "" && titleLen < absWidth {
+		out.WriteString(fmt.Sprintf("%s %s %s", middle, title, middle))
+		absWidth -= titleLen
+	}
+
+	for i := 0; i < absWidth; {
 		out.WriteRune(runes[j])
 		j++
 		if j >= len(runes) {
@@ -391,6 +404,7 @@ func renderHorizontalEdge(left, middle, right string, width int) string {
 		}
 		i += ansi.StringWidth(string(runes[j]))
 	}
+
 	out.WriteString(right)
 
 	return out.String()
